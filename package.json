@@ -4,7 +4,9 @@
   "description": "An Eleventy starter project to craft slick and responsive documentation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rimraf _site .cache"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "@11ty/eleventy-img": "^6.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "rimraf": "^6.1.3"
   }
 }
