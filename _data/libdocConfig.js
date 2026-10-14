@@ -3,12 +3,17 @@
 // https://github.com/11ty/eleventy/issues/3128#issuecomment-1878745864
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
+
+import path from "node:path";
+const normalizePrefix = (p) =>
+    !p || p === "/" ? "" : "/" + p.replace(/^\/+|\/+$/g, "") + "/";
 // END IMPORT REQUIRE WORKAROUND
 
 // START JSON IMPORT WORKAROUND
 // import userConfig from "../settings.json" with { "type": "json" };
 const userConfig = require("../settings.json");
 // END JSON IMPORT WORKAROUND
+
 
 export default {
     lang: userConfig.lang ?? "en",
@@ -28,7 +33,8 @@ export default {
     tocEnabled: userConfig.tocEnabled ?? true,
     tocHtmlTags: userConfig.tocHtmlTags ?? ["h1", "h2", "h3", "h4", "h5", "h6"],
     tocMinTags: userConfig.tocMinTags ?? 1,
-    htmlBasePathPrefix: userConfig.htmlBasePathPrefix ?? "",
+    htmlBasePathPrefix: normalizePrefix(
+    process.env.PATH_PREFIX ?? userConfig.htmlBasePathPrefix ?? path.basename(process.cwd())),
     sandboxRunSwitch: userConfig.sandboxRunSwitch ?? true,
     searchEnabled: userConfig.searchEnabled ?? true,
     hljsLanguages: userConfig.hljsLanguages ?? [
