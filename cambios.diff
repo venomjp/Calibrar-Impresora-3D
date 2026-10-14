@@ -1,0 +1,584 @@
+diff --git a/../Plantilla_Proyecto_old/_data/libdocConfig.js b/_data/libdocConfig.js
+index 6146da3..fb6582b 100644
+--- a/../Plantilla_Proyecto_old/_data/libdocConfig.js
++++ b/_data/libdocConfig.js
+@@ -13,3 +13,3 @@ const userConfig = require("../settings.json");
+ export default {
+-    lang: userConfig.lang ?? "es",
++    lang: userConfig.lang ?? "en",
+     siteTitle: userConfig.siteTitle ?? "11ty LibDoc",
+@@ -38,12 +38,5 @@ export default {
+         "yaml",
+-        "yml",
+         "liquid",
+         "markdown",
+-        "css",
+-        "arduino",
+-        "bash",
+-        "python",
+-        "cpp",
+-        "c",
+-        "gcode"
++        "css"
+     ],
+diff --git a/../Plantilla_Proyecto_old/_data/libdocFunctions.js b/_data/libdocFunctions.js
+index 9d6c5a0..fb50897 100644
+--- a/../Plantilla_Proyecto_old/_data/libdocFunctions.js
++++ b/_data/libdocFunctions.js
+@@ -112,3 +112,3 @@ export default {
+         cleanup: async function(content) {
+-            content = content.replaceAll(`<table>`, `<div class="o-auto w-100 table-wrapper"><table>`);
++            content = content.replaceAll(`<table`, `<div class="o-auto w-100 table-wrapper"><table`);
+             content = content.replaceAll(`</table>`, `</table></div>`);
+diff --git a/../Plantilla_Proyecto_old/_data/libdocMessages.json b/_data/libdocMessages.json
+index bd0310f..c7dd206 100644
+--- a/../Plantilla_Proyecto_old/_data/libdocMessages.json
++++ b/_data/libdocMessages.json
+@@ -4,4 +4,3 @@
+ 		"fr": "Copi├® dans le presse-papiers",
+-		"it": "Copiato negli appunti",
+-		"es": "Copiado al portapapeles"
++		"it": "Copiato negli appunti"
+ 	},
+@@ -10,4 +9,3 @@
+ 		"fr": "Code",
+-		"it": "Codice",
+-		"es": "C├│digo"
++		"it": "Codice"
+ 	},
+@@ -16,4 +14,3 @@
+ 		"fr": "Modes dÔÇÖapparences",
+-		"it": "Modalit├á visive",
+-		"es": "Esquemas de color"
++		"it": "Modalit├á visive"
+ 	},
+@@ -22,5 +19,3 @@
+ 		"fr": "Automatique",
+-		"it": "Automatica",
+-		"es": "Autom├ítico"
+-
++		"it": "Automatica"
+ 	},
+@@ -29,4 +24,3 @@
+ 		"fr": "Bas├® sur les r├¿gles dÔÇÖaffichage de votre syst├¿me",
+-		"it": "Basata sulle preferenze del tuo sistema",
+-		"es": "Basado en las preferencias de tu sistema"
++		"it": "Basata sulle preferenze del tuo sistema"
+ 	},
+@@ -35,5 +29,3 @@
+ 		"fr": "Clair",
+-		"it": "Chiaro",
+-		"es": "Claro"
+-
++		"it": "Chiaro"
+ 	},
+@@ -42,4 +34,3 @@
+ 		"fr": "Toujours appliquer le mode clair",
+-		"it": "Applica sempre il tema chiaro",
+-		"es": "Siempre aplicar el modo claro"
++		"it": "Applica sempre il tema chiaro"
+ 	},
+@@ -48,5 +39,3 @@
+ 		"fr": "Sombre",
+-		"it": "Scuro",
+-		"es": "Oscuro"
+-
++		"it": "Scuro"
+ 	},
+@@ -55,4 +44,3 @@
+ 		"fr": "Toujours appliquer le mode sombre",
+-		"it": "Applica sempre il tema scuro",
+-		"es": "Siempre aplicar el modo oscuro"
++		"it": "Applica sempre il tema scuro"
+ 	},
+@@ -61,5 +49,3 @@
+ 		"fr": "Copi├®",
+-		"it": "Copiato",
+-		"es": "Copiado"
+-
++		"it": "Copiato"
+ 	},
+@@ -68,4 +54,3 @@
+ 		"fr": "Copier",
+-		"it": "Copia",
+-		"es": "Copiar"
++		"it": "Copia"
+ 	},
+@@ -74,4 +59,3 @@
+ 		"fr": "Copier le code",
+-		"it": "Copia il codice",
+-		"es": "Copiar c├│digo"
++		"it": "Copia il codice"
+ 	},
+@@ -80,4 +64,3 @@
+ 		"fr": "Copier le HTML",
+-		"it": "Copia lÔÇÖHTML",
+-		"es": "Copiar HTML"
++		"it": "Copia lÔÇÖHTML"
+ 	},
+@@ -86,4 +69,3 @@
+ 		"fr": "Copier lÔÇÖURL",
+-		"it": "Copia lÔÇÖURL",
+-		"es": "Copiar URL"
++		"it": "Copia lÔÇÖURL"
+ 	},
+@@ -92,5 +74,3 @@
+ 		"fr": "Activer",
+-		"it": "Attiva",
+-		"es": "Activar"
+-
++		"it": "Attiva"
+ 	},
+@@ -99,4 +79,3 @@
+ 		"fr": "Aller en haut de page",
+-		"it": "Vai in vima alla pagina",
+-		"es": "Ir a la parte superior de la p├ígina"
++		"it": "Vai in vima alla pagina"
+ 	},
+@@ -105,5 +84,3 @@
+ 		"fr": "Modifier la page",
+-		"it": "Modifica la pagina",
+-		"es": "Editar esta p├ígina"
+-
++		"it": "Modifica la pagina"
+ 	},
+@@ -112,5 +89,3 @@
+ 		"fr": "Hauteur",
+-		"it": "Altezza",
+-		"es": "Altura"
+-
++		"it": "Altezza"
+ 	},
+@@ -119,4 +94,3 @@
+ 		"fr": "Page dÔÇÖaccueil",
+-		"it": "Pagina iniziale",
+-		"es": "P├ígina de inicio"
++		"it": "Pagina iniziale"
+ 	},
+@@ -125,5 +99,3 @@
+ 		"fr": "Accueil",
+-		"it": "Home",
+-		"es": "Inicio"
+-
++		"it": "Home"
+ 	},
+@@ -132,4 +104,3 @@
+ 		"fr": "Dans un nouvel onglet",
+-		"it": "In una nuova scheda",
+-		"es": "En una nueva pesta├▒a"
++		"it": "In una nuova scheda"
+ 	},
+@@ -138,4 +109,3 @@
+ 		"fr": "Derni├¿re modification",
+-		"it": "Ultima modifica",
+-		"es": "├Ültima modificaci├│n"
++		"it": "Ultima modifica"
+ 	},
+@@ -144,4 +114,3 @@
+ 		"fr": "Menu",
+-		"it": "Menu",
+-		"es": "Men├║"
++		"it": "Menu"
+ 	},
+@@ -150,4 +119,3 @@
+ 		"fr": "Il semble que JavaScript soit d├®sactiv├® de votre navigateur, LibDoc est en mode restreint avec des fonctionnalit├®s r├®duites.",
+-		"it": "Sembra che il tuo browser abbia JavaScript disattivato, LibDoc ├¿ impostato in modalit├á di riserva, con funzionalit├á ridotte.",
+-		"es": "Parece que JavaScript est├í desactivado en tu navegador, LibDoc est├í en modo de reserva con funciones reducidas."
++		"it": "Sembra che il tuo browser abbia JavaScript disattivato, LibDoc ├¿ impostato in modalit├á di riserva, con funzionalit├á ridotte."
+ 	},
+@@ -156,5 +124,3 @@
+ 		"fr": "Ouvrir",
+-		"it": "Apri",
+-		"es": "Abrir"
+-
++		"it": "Apri"
+ 	},
+@@ -163,4 +129,3 @@
+ 		"fr": "Ouvrir dans un nouvel onglet",
+-		"it": "Apri in una nuova scheda",
+-		"es": "Abrir en una nueva pesta├▒a"
++		"it": "Apri in una nuova scheda"
+ 	},
+@@ -169,4 +134,3 @@
+ 		"fr": "Autres liens personnalis├®s",
+-		"it": "Altri collegamenti personalizzati",
+-		"es": "Otros enlaces personalizados"
++		"it": "Altri collegamenti personalizzati"
+ 	},
+@@ -175,5 +139,3 @@
+ 		"fr": "Page",
+-		"it": "Pagina",
+-		"es": "P├ígina"
+-
++		"it": "Pagina"
+ 	},
+@@ -182,4 +144,3 @@
+ 		"fr": "Pages",
+-		"it": "Pagine",
+-		"es": "P├íginas"
++		"it": "Pagine"
+ 	},
+@@ -188,4 +149,3 @@
+ 		"fr": "Pages tagu├®es",
+-		"it": "Pagine con tag",
+-		"es": "P├íginas etiquetadas"
++		"it": "Pagine con tag"
+ 	},
+@@ -194,4 +154,3 @@
+ 		"fr": "Pr├®f├®rences",
+-		"it": "Preferenze",
+-		"es": "Preferencias"
++		"it": "Preferenze"
+ 	},
+@@ -200,5 +159,3 @@
+ 		"fr": "Recharger",
+-		"it": "Ricarica",
+-		"es": "Recargar"
+-
++		"it": "Ricarica"
+ 	},
+@@ -207,4 +164,3 @@
+ 		"fr": "Recharg├®",
+-		"it": "Ricaricato",
+-		"es": "Recargado"
++		"it": "Ricaricato"
+ 	},
+@@ -213,4 +169,3 @@
+ 		"fr": "R├®sultat",
+-		"it": "Risultato",
+-		"es": "Resultado"
++		"it": "Risultato"
+ 	},
+@@ -219,4 +174,3 @@
+ 		"fr": "Bac ├á sable",
+-		"it": "Sandbox",
+-		"es": "Sandbox"
++		"it": "Sandbox"
+ 	},
+@@ -225,4 +179,3 @@
+ 		"fr": "Cliquer d├®placer pour redimensionner code et r├®sultat",
+-		"it": "Clicca e trascina per ridimensionare il codice e il risultato",
+-		"es": "Haz clic y arrastra para redimensionar el c├│digo y el resultado"
++		"it": "Clicca e trascina per ridimensionare il codice e il risultato"
+ 	},
+@@ -231,4 +184,3 @@
+ 		"fr": "Rechercher",
+-		"it": "Cerca",
+-		"es": "Buscar"
++		"it": "Cerca"
+ 	},
+@@ -237,4 +189,3 @@
+ 		"fr": "Effacer la saisie",
+-		"it": "Cancella lÔÇÖinput",
+-		"es": "Limpiar entrada"
++		"it": "Cancella lÔÇÖinput"
+ 	},
+@@ -243,4 +194,3 @@
+ 		"fr": "3 caract├¿res min.",
+-		"it": "Almeno 3 aratteri",
+-		"es": "M├¡nimo 3 caracteres"
++		"it": "Almeno 3 aratteri"
+ 	},
+@@ -249,4 +199,3 @@
+ 		"fr": "Aucun r├®sultat pour la requ├¬te",
+-		"it": "Nessun risultato per questa ricerca",
+-		"es": "Sin resultados para la consulta"
++		"it": "Nessun risultato per questa ricerca"
+ 	},
+@@ -255,5 +204,3 @@
+         "fr": "Recherche dÔÇÖoccurrence",
+-		"it": "Ricerca di risultato",
+-		"es": "B├║squeda de ocurrencias"
+-
++		"it": "Ricerca di risultato"
+     },
+@@ -262,4 +209,3 @@
+ 		"fr": "Occurrence actuelle",
+-		"it": "Attuale risultato",
+-		"es": "Ocurrencia de b├║squeda actual"
++		"it": "Attuale risultato"
+ 	},
+@@ -268,5 +214,3 @@
+ 		"fr": "Occurrence suivante",
+-		"it": "Risultato seguente",
+-		"es": "Siguiente ocurrencia de b├║squeda"
+-
++		"it": "Risultato seguente"
+ 	},
+@@ -275,4 +219,3 @@
+ 		"fr": "Occurrence pr├®c├®dente",
+-		"it": "Risultato precedente",
+-		"es": "Anterior ocurrencia de b├║squeda"
++		"it": "Risultato precedente"
+ 	},
+@@ -281,4 +224,3 @@
+ 		"fr": "Fermet la recherches dÔÇÖoccurrences",
+-		"it": "Ferma la ricerca",
+-		"es": "Detener b├║squeda de ocurrencias"
++		"it": "Ferma la ricerca"
+ 	},
+@@ -287,5 +229,3 @@
+         "fr": "Presser ­ƒåé pour rechercher",
+-        "it": "Premere ­ƒåé per cercare",
+-        "es": "Presiona ­ƒåé para buscar"
+-
++        "it": "Premere ­ƒåé per cercare"
+     },
+@@ -294,4 +234,3 @@
+ 		"fr": "Lancer la recherche",
+-		"it": "Effettua la ricerca",
+-		"es": "Enviar b├║squeda"
++		"it": "Effettua la ricerca"
+ 	},
+@@ -300,5 +239,3 @@
+ 		"fr": "Sommaire",
+-		"it": "Indice",
+-		"es": "Tabla de contenido"
+-
++		"it": "Indice"
+ 	},
+@@ -307,4 +244,3 @@
+ 		"fr": "Sommaire",
+-		"it": "Indice",
+-		"es": "TC"
++		"it": "Indice"
+ 	},
+@@ -313,4 +249,3 @@
+ 		"fr": "Tag",
+-		"it": "Tag",
+-		"es": "Tag"
++		"it": "Tag"
+ 	},
+@@ -319,4 +254,3 @@
+ 		"fr": "Liste des tags",
+-		"it": "Lista dei tag",
+-		"es": "Lista de tags"
++		"it": "Lista dei tag"
+ 	},
+@@ -325,4 +259,3 @@
+ 		"fr": "Liste de lÔÇÖensemble des tags disponibles",
+-		"it": "Lista di tutti i tag disponibili",
+-		"es": "Lista de todos los tags disponibles"
++		"it": "Lista di tutti i tag disponibili"
+ 	},
+@@ -331,4 +264,3 @@
+ 		"fr": "Basculer la table des mati├¿res flottante",
+-		"it": "Cambia impostazione indice fluttuante",
+-		"es": "Alternar tabla de contenido flotante"
++		"it": "Cambia impostazione indice fluttuante"
+ 	},
+@@ -337,5 +269,3 @@
+ 		"fr": "Haut",
+-		"it": "In cima",
+-		"es": "Arriba"
+-
++		"it": "In cima"
+ 	},
+@@ -344,5 +274,3 @@
+ 		"fr": "Pr├®f├®rences utilisateur",
+-		"it": "Preferenze dell'utente",
+-		"es": "Preferencias del usuario"
+-
++		"it": "Preferenze dell'utente"
+ 	},
+@@ -351,10 +279,3 @@
+ 		"fr": "Largeur",
+-		"it": "Larghezza",
+-		"es": "Ancho"
+-	},
+-	"goBack": {
+-		"en": "Go back",
+-		"fr": "Retour",
+-		"it": "Indietro",
+-		"es": "Ir atr├ís"
++		"it": "Larghezza"
+ 	}
+diff --git a/../Plantilla_Proyecto_old/_includes/libdoc_page.liquid b/_includes/libdoc_page.liquid
+index 2efac80..9dcd89a 100644
+--- a/../Plantilla_Proyecto_old/_includes/libdoc_page.liquid
++++ b/_includes/libdoc_page.liquid
+@@ -103,5 +103,2 @@
+     </script>
+-    <script>
+-        window.LIBDOC_BASE_PATH = "{{ libdocConfig.htmlBasePathPrefix }}";
+-    </script>
+ </head>
+@@ -416,3 +413,2 @@
+                     {% if editThisPageRootUrl.size > 0 %}
+-                        <!-- JP V1. Footer quito esta parte para uqe no salga el bot├│n de editar esta p├ígina.
+                         <a  href="{{ editThisPageUrl }}"
+@@ -423,3 +419,2 @@
+                         </a>
+-                        -->
+                     {% endif %}
+@@ -427,3 +422,3 @@
+                     <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" w-100="sm,md"></div>
+-                    <!-- JP V1. Footer quito esta parte para que no salga la versi├│n de libdoc con la que se ha hecho.--                    <a  href="https://github.com/ita-design-system/eleventy-libdoc"
++                    <a  href="https://github.com/ita-design-system/eleventy-libdoc"
+                         target="_blank"
+@@ -432,102 +427,4 @@
+                     </a>
+-                    -->
+-                    <!--
+-                    <a href="#" class="btn btn-primary-light" onclick="
+-                        const path = window.location.pathname.replace(/\/$/, '');
+-                        const parent = path.substring(0, path.lastIndexOf('/')) || '/';
+-                        window.location.href = parent + '/';
+-                        return false;
+-                    ">
+-                        <span class="icon-arrow-square-out"></span>
+-                        {{ libdocMessages.goBack[libdocConfig.lang] }}
+-                    </a>  -->
+-                    <!-- JP V1. He reescrito el c├│digo del bot├│n de volver atr├ís para que suba un nivel real en funci├│n de la ruta, y si no se puede subir m├ís, se desactive el bot├│n. -->
+-                    <a id="backBtn" class="btn btn-primary-light">
+-                        <span class="icon-arrow-square-out"></span>
+-                        {{ libdocMessages.goBack[libdocConfig.lang] }}
+-                    </a>                    
+-                    <script>
+-                    document.addEventListener("DOMContentLoaded", function() {
+-                        const backBtn = document.getElementById("backBtn");
+-
+-                        let path = window.location.pathname;
+-
+-                        // Normalizar quitando / final (excepto si es solo "/")
+-                        if (path.length > 1 && path.endsWith("/")) {
+-                            path = path.slice(0, -1);
+-                        }
+-
+-                        const segments = path.split("/").filter(Boolean);
+-
+-                        // Seguridad b├ísica
+-                        if (segments.length === 0) {
+-                            disableBtn();
+-                            return;
+-                        }
+-
+-                        // Base autom├ítica: /NombreProyecto
+-                        const base = window.LIBDOC_BASE_PATH === "/" ? "" : window.LIBDOC_BASE_PATH.replace(/\/$/, "");
+-                        //const base = "/" + segments[0];
+-                        const pagesRoot = base + "/pages";
+-                        const postsRoot = base + "/posts";
+-
+-                        // ========== HOME ==========
+-                        if (path === base) {
+-                            disableBtn();
+-                            return;
+-                        }
+-
+-                        // ========== P├üGINAS /pages/ ==========
+-                        if (path.startsWith(pagesRoot)) {
+-                            const pagesIndex = segments.indexOf("pages");
+-                            const depth = segments.length - pagesIndex - 1;
+-                            //const depth = segments.length - 2; // quitamos [proyecto, pages]
+-
+-                            if (depth === 1) {
+-                                // /Proyecto/pages/nivel1 -> home
+-                                backBtn.href = base + "/";
+-                            } else {
+-                                // /Proyecto/pages/n1/n2 -> /Proyecto/pages/n1/
+-                                const parent = path.split("/").slice(0, -1).join("/") + "/";
+-                                backBtn.href = parent;
+-                            }
+-                            return;
+-                        }
+-
+-                        // ========== BLOG /posts/ ==========
+-                        if (path.startsWith(postsRoot)) {
+-                            const postsIndex = segments.indexOf("posts");
+-                            const depth = segments.length - postsIndex - 1;
+-                            //const depth = segments.length - 2; // quitamos [proyecto, posts]
+-
+-                            if (depth === 1) {
+-                                // /Proyecto/posts/post-slug -> /Proyecto/posts/
+-                                backBtn.href = postsRoot + "/";
+-                            } else if (depth === 0) {
+-                                // /Proyecto/posts -> home
+-                                backBtn.href = base + "/";
+-                            } else {
+-                                // Por si en el futuro hubiera m├ís profundidad dentro de posts
+-                                const parent = path.split("/").slice(0, -1).join("/") + "/";
+-                                backBtn.href = parent;
+-                            }
+-                            return;
+-                        }
+-
+-                        // ========== CUALQUIER OTRA RUTA ==========
+-                        disableBtn();
+-
+-                        function disableBtn() {
+-                            backBtn.classList.add("disabled");
+-                            backBtn.style.pointerEvents = "none";
+-                            backBtn.style.opacity = "0.40";
+-                            backBtn.style.cursor = "default";
+-                            backBtn.style.filter = "grayscale(80%)";
+-                            backBtn.removeAttribute("href");
+-                        }
+-                    });
+-                    </script>
+                 </nav>
+             </footer>
+-            
+         </main>
+diff --git a/../Plantilla_Proyecto_old/.eleventy.js b/.eleventy.js
+index 90a170d..491db89 100644
+--- a/../Plantilla_Proyecto_old/.eleventy.js
++++ b/.eleventy.js
+@@ -1,2 +1 @@
+-
+ // START 11TY imports
+@@ -7,4 +6,2 @@ import { EleventyHtmlBasePlugin }           from "@11ty/eleventy";
+ import pluginRss                            from "@11ty/eleventy-plugin-rss";
+-import projectConfig                        from "./eleventy.project.config.js";
+-
+ // END 11TY imports
+@@ -17,3 +14,2 @@ import libdocFunctions                      from "./_data/libdocFunctions.js";
+ export default function(eleventyConfig) {
+-
+     // START PLUGINS
+@@ -57,7 +53,4 @@ export default function(eleventyConfig) {
+     eleventyConfig.addPassthroughCopy("core/assets");
++    eleventyConfig.addPassthroughCopy("favicon.png");
+     // END FILE COPY
+-
+-    //START PROJECT CONFIG
+-    projectConfig(eleventyConfig);
+-    //END PROJECT CONFIG
+     
+diff --git a/../Plantilla_Proyecto_old/.eleventyignore b/.eleventyignore
+index ed5a35f..c7870c0 100644
+--- a/../Plantilla_Proyecto_old/.eleventyignore
++++ b/.eleventyignore
+@@ -1,8 +1,4 @@
+ README.md
+-PATCHES.md
+-TEMPLATE.md
+ sandboxes/
+-3dDesign/
+-files/
+-sourceCode/
++assets/
+ # ___dummy_content/
+\ No newline at end of file
+diff --git a/../Plantilla_Proyecto_old/core/assets/css/ds__defaults.css b/core/assets/css/ds__defaults.css
+index 3715f15..0c9e1a7 100644
+--- a/../Plantilla_Proyecto_old/core/assets/css/ds__defaults.css
++++ b/core/assets/css/ds__defaults.css
+@@ -571,3 +571,3 @@ main > *:not(header) details summary::before {
+     background-color: currentColor;
+-    mask-image: url('../icons/plus-circle.svg');
++    mask-image: url('/core/assets/icons/plus-circle.svg');
+     mask-position: center;
+@@ -583,3 +583,3 @@ main > details[open] summary::before,
+ main > *:not(header) details[open] summary::before {
+-    mask-image: url('../icons/minus-circle.svg');
++    mask-image: url('/core/assets/icons/minus-circle.svg');
+ }
+diff --git a/../Plantilla_Proyecto_old/core/assets/css/icons.css.liquid b/core/assets/css/icons.css.liquid
+index ee3c1a4..5d86086 100644
+--- a/../Plantilla_Proyecto_old/core/assets/css/icons.css.liquid
++++ b/core/assets/css/icons.css.liquid
+@@ -17,3 +17,3 @@ eleventyExcludeFromCollections: true
+ .icon-{{ iconName }} {
+-    mask-image: url('{{ libdocConfig.htmlBasePathPrefix }}core/assets/icons/{{ iconName }}.svg');
++    mask-image: url('{{ libdocConfig.htmlBasePathPrefix }}/core/assets/icons/{{ iconName }}.svg');
+ }
