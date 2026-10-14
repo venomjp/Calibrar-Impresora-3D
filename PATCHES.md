@@ -4,8 +4,8 @@ Registro de todo lo que esta plantilla modifica, añade o elimina respecto a [el
 
 Principio: los archivos que LibDoc sustituye al actualizar (`_data`, `_includes`, `core`, `.eleventy.js`, `package.json`) se tocan lo mínimo. Todo lo demás se resuelve en archivos propios (`eleventy.project.js`, `settings.json`, `pages/`...).
 
-- Base de LibDoc: `0.14.9`
-- Última actualización de upstream: `<2026-10-14>`
+- Base de LibDoc: `0.14.9` + dependencias de `main` (commit `50e4386`; solo cambian `package.json` y `package-lock.json`)
+- Última actualización de upstream: `<AAAA-MM-DD>`
 
 Regla: cualquier cambio en un archivo de LibDoc se anota aquí **en el mismo commit** en que se hace.
 
@@ -95,10 +95,18 @@ Añadir:
 },
 "devDependencies": {
     "rimraf": "^6.1.3"
+},
+"allowScripts": {
+    "sharp": true,
+    "fsevents@2.3.3": true
 }
 ```
 
 En `scripts`, conservar `test` solo si upstream lo mantiene.
+
+Regla para parches en JSON: solo añadir líneas, nunca modificar una existente (ni siquiera una coma final), o cada subida de versión de LibDoc dará conflicto. Por eso `devDependencies` es un bloque nuevo entre `dependencies` y `allowScripts`, y `"sharp": true` va el primero dentro de `allowScripts`. Comprobación: `git diff upstream/main -- package.json` solo debe mostrar líneas con `+`. (`"fsevents@2.3.3": true` es de upstream; se deja como está.)
+
+`allowScripts`: las versiones recientes de npm avisan de las dependencias con scripts de instalación que nadie ha revisado (aquí, `sharp`). Se aprueba por nombre, sin fijar versión, para que el aviso no vuelva a salir en cada actualización de `sharp`. No usar `npm audit fix --force`: puede subir mayores de eleventy, eleventy-img o sharp y romper la base de LibDoc.
 
 ---
 
