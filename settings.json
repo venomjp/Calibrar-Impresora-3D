@@ -1,11 +1,12 @@
 {
-    "siteTitle": "My Project Title",
-    "siteDescription": "This is the description of my project title",
-    "author": "John Doe",
+    "siteTitle": "Plantilla_Proyecto",
+    "siteDescription": "Proyecto con Documentación y página web integrada",
+    "author": "Juan Pedro Perianes",
     "faviconUrl": "/assets/myfavicon.png",
-    "blogTitle": "Blog",
-    "blogDescription": "Here is the description of the blog part",
-    "productionUrl": "https://eleventy-libdoc.netlify.app",
+    "blogTitle": "Bitácora",
+    "blogSlug": "bitacora",
+    "blogDescription": "Avances, problemas, soluciones, notas técnicas, decisiones de diseño, recordatorio de aciertos y errores, etc.",
+    "productionUrl": "#",
     "customLinks": [
         {
             "url": "/feed.xml",
@@ -27,6 +28,24 @@
             "url": "#",
             "text": "CodePen"
         }
+    ],
+    "lang": "es",
+    "hljsLanguages": [
+        "xml",
+        "html",
+        "javascript",
+        "json",
+        "yml",
+        "yaml",
+        "liquid",
+        "markdown",
+        "css",
+        "arduino",
+        "bash",
+        "python",
+        "cpp",
+        "c",
+        "gcode"
     ],
     "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
 }
