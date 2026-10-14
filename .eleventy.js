@@ -11,6 +11,10 @@ import libdocConfig                         from "./_data/libdocConfig.js";
 import libdocFunctions                      from "./_data/libdocFunctions.js";
 // END LibDoc imports
 
+// START Project imports
+import projectConfig from "./eleventy.project.js";
+// END Project imports
+
 export default function(eleventyConfig) {
     // START PLUGINS
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
@@ -53,6 +57,10 @@ export default function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("core/assets");
     eleventyConfig.addPassthroughCopy("favicon.png");
     // END FILE COPY
+
+    // START Project config
+    projectConfig(eleventyConfig);
+    // END Project config
     
     return {
         pathPrefix: libdocConfig.htmlBasePathPrefix
