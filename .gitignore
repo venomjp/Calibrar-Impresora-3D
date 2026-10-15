@@ -5,4 +5,5 @@ _site
 .DS_Store
 _data/envlocal.json
 .env
+.log
 /assets/___dummy_content
