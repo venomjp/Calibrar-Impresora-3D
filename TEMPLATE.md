@@ -17,6 +17,7 @@ LibDoc (upstream)  ->  Plantilla_Proyecto (remoto "upstream")  ->  cada proyecto
 
 - Node 24 (`.nvmrc`) y npm. Comprobar con `node -v`.
 - Git y GitHub Desktop.
+- `.nvmrc` debe contener una sola línea: `24`. `.gitattributes` debe contener: `* text=auto eol=lf`. Vacíos no sirven (el primero hace fallar la CI). En PowerShell, créalos con `Set-Content .nvmrc "24"` o con el editor; no con `echo ... > archivo`, que en Windows PowerShell 5.1 escribe UTF-16.
 - Los repositorios viven en una carpeta local normal, **nunca** dentro de Google Drive ni OneDrive (corrompen `.git`). La copia de seguridad es GitHub o el servidor.
 - El nombre de la carpeta del proyecto **es** el prefijo de rutas de la web (ver sección 6). Sin espacios ni tildes.
 
@@ -161,7 +162,7 @@ Remove-Item Env:PATH_PREFIX
 
 ### GitHub Pages
 
-1. En el repo: Settings > Pages > Build and deployment > Source: **GitHub Actions**.
+1. **En cada repositorio nuevo, a mano**: Settings > Pages > Build and deployment > Source: **GitHub Actions**. Es un ajuste del repositorio, no de los archivos: no viaja con los clones ni con las copias de la plantilla. Mientras no esté activado, el job `build` termina pero el job `deploy` falla. Una vez activado, se mantiene en ese repo. Si un proyecto no se va a publicar en Pages, borra `.github/workflows/build.yml` para que no falle en cada push.
 2. Cada push a `main` ejecuta `.github/workflows/build.yml`, que construye con `PATH_PREFIX=/<nombre-del-repo>/` y publica `_site/`.
 3. La web queda en `https://<usuario>.github.io/<repo>/`.
 
@@ -171,9 +172,11 @@ Si el repo se llama `<usuario>.github.io`, la web va en la raíz: pon `PATH_PREF
 
 ### Servidor propio (Proxmox, LXC y Caddy)
 
-> Pendiente de documentar: el script `deploy-site` (cómo construye y a dónde copia en el LXC).
+El `_site` que genera `npm run build` es el mismo que sirve GitHub Pages: no hace falta nada específico para el servidor. Se construye en una carpeta con el nombre del proyecto (así el prefijo coincide) y se copia `_site/` a la ruta que Caddy sirve como `/<carpeta>/`. Si la carpeta de build no se llama como esa ruta, construye con `PATH_PREFIX=/<ruta-de-caddy>/`.
 
-Regla que debe cumplir: el build se hace con `PATH_PREFIX=/<carpeta>/` (o dentro de una carpeta con ese nombre) y `_site/` se copia a la ruta que Caddy sirve como `/<carpeta>/`.
+> Pendiente de comprobar y documentar: el script `deploy-site` con este flujo.
+
+Una web privada se publica solo aquí. No uses GitHub Pages para documentación privada: las webs de Pages son públicas (salvo planes Enterprise con acceso restringido).
 
 ---
 
@@ -188,7 +191,7 @@ npm ci
 npm run build
 ```
 
-`-X ours` hace que, si el proyecto y la plantilla tocan la misma línea (típicamente `README.md`, `settings.json` o el contenido de `pages/`), gane la del proyecto. Es seguro porque en un proyecto solo cambias contenido, no el código de LibDoc. Los archivos que no has tocado se actualizan solos. Si la plantilla añade claves nuevas a `settings.json`, no se aplican: míralas con `git diff HEAD~1 -- settings.json` o en `PATCHES.md`.
+`-X ours` hace que, si el proyecto y la plantilla tocan la misma línea (típicamente `README.md`, `settings.json` o el contenido de `pages/`), gane la del proyecto. Es seguro porque en un proyecto solo cambias contenido, no el código de LibDoc. Los archivos que no has tocado se actualizan solos. Si la plantilla añade claves nuevas a `settings.json`, pueden quedarse sin aplicar: compara con `git diff template/main -- settings.json` y revisa también `PATCHES.md`.
 
 ---
 
@@ -261,4 +264,6 @@ Revisa en la web: iconos, acordeones, imágenes, menú, blog, botón "volver", p
 | Iconos que no cargan en GitHub Pages | Prefijo mal calculado o parches de los CSS sin aplicar (ver `PATCHES.md`). |
 | Avisos `LF will be replaced by CRLF` | Falta `.gitattributes` (`* text=auto eol=lf`). |
 | `npm ci` falla en la CI | `package-lock.json` desincronizado: `npm install` y commitear el lock. |
+| La CI falla en "Setup Node" | `.nvmrc` vacío o ausente: debe contener `24`. |
+| El job `deploy` falla con un error de Pages | Pages no está activado en ese repo (ver sección 6). |
 | El botón "volver" no sale | No hay JavaScript, o el pie de LibDoc cambió (selector `main footer nav` en `eleventy.project.js`). |
