@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Plantilla de proyectos
 description: Página HOME del proyecto
 ---
 <img src="/favicon.png" 
