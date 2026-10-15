@@ -46,6 +46,5 @@
         "cpp",
         "c",
         "gcode"
-    ],
-    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
+    ]
 }

@@ -2,6 +2,9 @@
 title: Home
 description: Página HOME del proyecto
 ---
+<img src="/favicon.png" 
+     alt="Mi icono" 
+     style="width: 128px; height: 128px; display: block; margin: 0 auto;">
 
 # Ubicación, nomenclatura y ruta de archivos y carpetas
 
