@@ -1,6 +1,6 @@
 # README del Proyecto X
 
-![Imagen en el README del proyecto X](./resources/files/imagenReadme.pub.jpg)
+![Imagen en el README del proyecto X](./resources/files/imagenReadme.jpg)
 
 # Cómo usar esta plantilla para crear otros proyectos
 

@@ -1,6 +1,6 @@
 # TEMPLATE
 
-Cambios Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc) con estructura de páginas y bitácora propia, y carpetas de recursos del proyecto.
+Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc) con estructura de páginas y bitácora propia, y carpetas de recursos del proyecto.
 
 - Qué se ha cambiado respecto a LibDoc: `PATCHES.md`.
 - Este archivo no se publica en la web (lo ignora `eleventy.project.js`).
