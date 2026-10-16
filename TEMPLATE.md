@@ -1,19 +1,21 @@
 # TEMPLATE
 
-Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc) con estructura de páginas y bitácora propia, y carpetas de recursos del proyecto.
+Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github.com/ita-design-system/eleventy-libdoc) con estructura de páginas y bitácora (blog) propia, a la que se le ha añadido una carpeta en la que se distribuyen los recursos del proyecto.
 
-- Qué se ha cambiado respecto a LibDoc: `PATCHES.md`.
+- Qué se ha cambiado respecto a LibDoc: [PATCHES](PATCHES.md).
 - Este archivo no se publica en la web (lo ignora `eleventy.project.js`).
 
 Hay tres niveles de repositorio:
 
 ```
-LibDoc (upstream)  ->  Plantilla_Proyecto (remoto "upstream")  ->  cada proyecto (remoto "template")
+LibDoc (upstream)  ->  Plantilla_Proyecto ("fork" - template)  ->  cada proyecto (documentación)
 ```
 
 ---
 
 ## 1. Requisitos
+
+Partimos
 
 - Node 24 (`.nvmrc`) y npm. Comprobar con `node -v`.
 - Git y GitHub Desktop.
