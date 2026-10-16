@@ -1,9 +1,8 @@
 node_modules
-.vscode
 _site
-.cache
-.DS_Store
 _data/envlocal.json
+.vscode
 .env
 .log
-/assets/___dummy_content
+.cache
+.DS_Store

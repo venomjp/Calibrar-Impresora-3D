@@ -1,7 +1,7 @@
 ---
-title: Post 1
-description: Descripción del post 1
-date: 2026-03-24
+title: Contenido bitácora
+description: Qué tipo de contenido incluir en la bitácora del proyecto
+date: 2026-10-15
 ---
 # Qué tipo de Contenido incluir
 

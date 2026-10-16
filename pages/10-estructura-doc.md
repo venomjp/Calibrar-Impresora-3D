@@ -1,6 +1,8 @@
 ---
 title: 10-estructura-doc
 description: Página de nivel 1 con subpáginas
+tags:
+    - estructura
 ---
 
 # Idea

@@ -7,19 +7,28 @@ Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github
 
 Hay tres niveles de repositorio:
 
-```
-LibDoc (upstream)  ->  Plantilla_Proyecto ("fork" - template)  ->  cada proyecto (documentación)
+```text
+LibDoc (upstream) -> Plantilla_Proyecto ("fork"-template) -> cada proyecto (documentación)
 ```
 
 ---
 
 ## 1. Requisitos
 
-Partimos
+Partimos de la base de que el ordenador que se utilice deberá tener instalado previamente:
+* [Git](https://git-scm.com/)
+  * `.gitattributes` debe contener: `* text=auto eol=lf`. 
+* [GitHub Desktop](https://desktop.github.com/)
+* [Visual Studio Code](https://code.visualstudio.com/). Algunas Extensiones interesantes:
+  * Markdown All in One
+  * GitHub Actions
+  * GitHub Copilot Chat
+  * Git History
+  * Liquid
+* [NodeJS](https://nodejs.org/)
+  * Node 24 (`.nvmrc`) y npm. Comprobar con `node -v`.
+  * `.nvmrc` debe contener una sola línea: `24`.
 
-- Node 24 (`.nvmrc`) y npm. Comprobar con `node -v`.
-- Git y GitHub Desktop.
-- `.nvmrc` debe contener una sola línea: `24`. `.gitattributes` debe contener: `* text=auto eol=lf`. Vacíos no sirven (el primero hace fallar la CI). En PowerShell, créalos con `Set-Content .nvmrc "24"` o con el editor; no con `echo ... > archivo`, que en Windows PowerShell 5.1 escribe UTF-16.
 - Los repositorios viven en una carpeta local normal, **nunca** dentro de Google Drive ni OneDrive (corrompen `.git`). La copia de seguridad es GitHub o el servidor.
 - El nombre de la carpeta del proyecto **es** el prefijo de rutas de la web (ver sección 6). Sin espacios ni tildes.
 
@@ -27,7 +36,7 @@ Partimos
 
 ## 2. Crear un proyecto nuevo
 
-No uses "Download ZIP": se pierde la historia y con ella las actualizaciones. Clona y cambia el remoto:
+No uses **"Download ZIP"**: se pierde la historia y con ella las actualizaciones. Clona y cambia el remoto:
 
 ```powershell
 git clone https://github.com/venomjp/Plantilla_Proyecto.git Mi-Proyecto
@@ -44,20 +53,23 @@ git push -u origin main
 
 Después, en GitHub Desktop: File > Add local repository, y elige la carpeta. Si el proyecto es solo para tu servidor, puedes no crear `origin`.
 
-Primer arranque:
+* **Primer arranque:**
 
 ```powershell
 npm ci
 npm start
 ```
 
-Usa siempre `npm ci` en un clon nuevo: respeta `package-lock.json` y deja los mismos paquetes en todos tus ordenadores. `npm install` solo cuando cambies dependencias a propósito (y entonces commitea el lock).
+* **Buenas prácticas:**
+Usa siempre `npm ci` (Clean Install) en un clon nuevo: respeta `package-lock.json` instalando exactamente las versiones que se encuentran en él y deja los mismos paquetes en todos tus ordenadores. Si el directorio node_modules existe, lo borra por completo y lo descarga de cero. `npm install` solo cuando cambies dependencias a propósito (que suele definir rangos de versiones, por ejemplo, `^18.2.0`). Si encuentra versiones compatibles más recientes, las descarga y actualiza el archivo `package-lock.json` para reflejar los cambios, después debes hacer un commit en Git que incluya tanto `package.json` como `package-lock.json` actualizado para reflejar los cambios.
 
 La web de desarrollo está en `http://localhost:8080/Mi-Proyecto/` (incluye el prefijo).
 
 ---
 
 ## 3. Cambios básicos al empezar
+
+* Las indicaciones paso a paso de los cambios que hay que introducir están en el archivo [PATCHES](PATCHES.md).
 
 | Archivo | Qué cambiar |
 |---|---|
@@ -69,18 +81,27 @@ La web de desarrollo está en `http://localhost:8080/Mi-Proyecto/` (incluye el p
 
 JSON no admite comentarios: la documentación de las claves de `settings.json` está en [la web de LibDoc](https://eleventy-libdoc.netlify.app/configuration/).
 
-No hace falta tocar nada más: `.eleventy.js`, `_data/`, `_includes/` y `core/` son de LibDoc.
+No hace falta tocar nada más: `.eleventy.js`, `_data/`, `_includes/` y `core/` son de LibDoc y no deben modificarse, cada versión nueva de LibDoc actualizará estos archivos.
 
 ---
 
 ## 4. Contenido: carpeta `pages/`
 
-La URL, el menú y las migas de pan salen de la ruta del archivo. No se escribe `permalink`, `layout`, `tags` ni `eleventyNavigation`.
+La URL, el menú y las migas de pan salen de la ruta del archivo. No se escribe `permalink`, `layout`, ni `eleventyNavigation`.
+
+* Se pueden definir `tags` en el front matter, tanto en páginas como en posts (para filtrar en la bitácora, por ejemplo).
+
+```text
+tags:
+    - tag1
+    - tag2
+```
+* La estructura de carpetas y archivos en `pages/` define la jerarquía de la web.
 
 ```
 pages/
   pages.11tydata.js          (no tocar)
-  index.md                   -> /
+  index.md                   -> / (home)
   10-estructura.md           -> /estructura/
   20-guia.md                 -> /guia/
   20-guia/
@@ -90,18 +111,19 @@ pages/
   bitacora/
     bitacora.json            (no tocar)
     primer-post.md           -> /bitacora/primer-post/
+    segundo-post.md           -> /bitacora/segundo-post/
 ```
 
-Reglas:
+* **Reglas:**
 
-1. **Prefijo numérico**: `10-`, `20-`... Marca el orden en el menú y en VSCode, y no aparece en la URL. Numera de 10 en 10 para poder insertar páginas sin renombrar. El número no puede repetirse en el mismo nivel.
-2. **Nombres en minúsculas con guiones** (`primeros-pasos`, no `primerosPasos`).
-3. **Una página con hijos** lleva al lado una carpeta con el mismo nombre: `20-guia.md` y `20-guia/`. También vale un `index.md` dentro de la carpeta, pero no ambas formas a la vez.
-4. **Toda carpeta necesita su página.** Si falta, la build para con el mensaje "Falta la página de la carpeta...".
-5. La numeración reinicia en cada carpeta (los hijos no heredan el número del padre).
+1. **Prefijo numérico**: `10-`, `20-`... Marca el orden en el menú y en VSCode, y no aparece en la URL. Numera de 10 en 10 para poder insertar páginas sin renombrar. El número no puede repetirse en el mismo nivel. No hace falta numerar los posts de la bitácora.
+2. La numeración se reinicia en cada carpeta (los hijos no heredan el número del padre).
+3. **Nombres en minúsculas con guiones** (`primeros-pasos`, no `primerosPasos`).
+4. **Una página con hijos** lleva al lado una carpeta con el mismo nombre: `20-guia.md` y `20-guia/`. También vale un `index.md` dentro de la carpeta, pero no ambas formas a la vez.
+5. **Toda carpeta necesita su página.** Si falta, la build para con el mensaje "Falta la página de la carpeta...".
 6. Mover un archivo a otra carpeta cambia su padre y su URL automáticamente. Renombrar el título no rompe nada.
 
-Front matter de una página:
+* **Front matter de una página (cabecera):**
 
 ```yaml
 ---
@@ -110,7 +132,9 @@ description: Resumen corto de la página
 ---
 ```
 
-Front matter de un post (en `pages/bitacora/`; la fecha va en el front matter, no en el nombre):
+* **Front matter de un post (en `pages/bitacora/`):**
+
+Se incluye la fecha en la cabecera, servirá para ordenar los posts y mostrarla en la web. La fecha debe escribirse en formato `YYYY-MM-DD` (ISO 8601).
 
 ```yaml
 ---
@@ -120,7 +144,9 @@ date: 2026-10-15
 ---
 ```
 
-Enlaces entre páginas: usa la ruta del archivo `.md` relativa a la página actual (por ejemplo `[ver](../10-estructura.md)`). El plugin de Eleventy la traduce a la URL final, aunque renombres o muevas cosas.
+* **Enlaces entre páginas:** 
+
+Usa la ruta del archivo `.md` relativa a la página actual (por ejemplo `[ver](../10-estructura.md)`). El plugin de Eleventy la traduce a la URL final, aunque renombres o muevas cosas.
 
 ---
 
@@ -164,11 +190,9 @@ Remove-Item Env:PATH_PREFIX
 
 ### GitHub Pages
 
-1. **En cada repositorio nuevo, a mano**: Settings > Pages > Build and deployment > Source: **GitHub Actions**. Es un ajuste del repositorio, no de los archivos: no viaja con los clones ni con las copias de la plantilla. Mientras no esté activado, el job `build` termina pero el job `deploy` falla. Una vez activado, se mantiene en ese repo. Si un proyecto no se va a publicar en Pages, borra `.github/workflows/build.yml` para que no falle en cada push.
+1. **En cada repositorio nuevo, a mano**: Hay que activar las Pages en `Settings > Pages > Build and deployment > Source: **GitHub Actions**`. Es un ajuste del repositorio, no de los archivos: no viaja con los clones ni con las copias de la plantilla. Mientras no esté activado, el job `build` termina pero el job `deploy` falla. Una vez activado, se mantiene en ese repo. Si un proyecto no se va a publicar en Pages, borra `.github/workflows/build.yml` para que no falle en cada push.
 2. Cada push a `main` ejecuta `.github/workflows/build.yml`, que construye con `PATH_PREFIX=/<nombre-del-repo>/` y publica `_site/`.
 3. La web queda en `https://<usuario>.github.io/<repo>/`.
-
-Si el repo se llama `<usuario>.github.io`, la web va en la raíz: pon `PATH_PREFIX: /` en el workflow.
 
 `_site/` nunca se sube al repo: se genera en la build.
 
@@ -178,7 +202,7 @@ El `_site` que genera `npm run build` es el mismo que sirve GitHub Pages: no hac
 
 > Pendiente de comprobar y documentar: el script `deploy-site` con este flujo.
 
-Una web privada se publica solo aquí. No uses GitHub Pages para documentación privada: las webs de Pages son públicas (salvo planes Enterprise con acceso restringido).
+***Una web privada se publica solo aquí. No uses GitHub Pages para documentación privada: las webs de Pages son públicas.***
 
 ---
 
