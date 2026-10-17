@@ -2,31 +2,24 @@
     "siteTitle": "Plantilla_Proyecto",
     "siteDescription": "Proyecto con Documentación y página web integrada",
     "author": "Juan Pedro Perianes",
-    "faviconUrl": "/assets/myfavicon.png",
+    "faviconUrl": "favicon.png",
     "blogTitle": "Bitácora",
     "blogSlug": "bitacora",
     "blogDescription": "Avances, problemas, soluciones, notas técnicas, decisiones de diseño, recordatorio de aciertos y errores, etc.",
     "productionUrl": "#",
     "customLinks": [
+
         {
-            "url": "/feed.xml",
-            "text": "Atom feed"
-        },
-        {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
+            "url": "#",
             "text": "GitHub"
         },
         {
             "url": "#",
-            "text": "Bluesky"
+            "text": "Trello"
         },
         {
             "url": "#",
-            "text": "LinkedIn"
-        },
-        {
-            "url": "#",
-            "text": "CodePen"
+            "text": "Plutón"
         }
     ],
     "lang": "es",

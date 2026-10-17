@@ -2,14 +2,14 @@
 title: Credenciales GitHub
 description: Evitar que VS Code pida credenciales de GitHub cada vez que interactuas con el proyecto
 date: 2026-10-16
+tags:
+    - credenciales
+    - github
 ---
-# Credenciales GitHub
-
-## Cómo evitar que VS Code pida credenciales de GitHub cada vez que interactuas con el proyecto
 
 Cuando trabajas en un proyecto de GitHub, es posible que VS Code te pida credenciales cada vez que intentes hacer cambios o sincronizar tu código. Para evitar esto, puedes configurar una autenticación persistente.
 
-### Usar el Gestor de Credenciales de Git
+# Usar el Gestor de Credenciales de Git
 
 1. Abre VS Code.
 2. Abre la terminal integrada

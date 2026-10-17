@@ -2,6 +2,8 @@
 title: Contenido bitácora
 description: Qué tipo de contenido incluir en la bitácora del proyecto
 date: 2026-10-15
+tags:
+    - contenidos
 ---
 # Qué tipo de Contenido incluir
 

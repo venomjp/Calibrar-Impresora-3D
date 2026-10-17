@@ -12,6 +12,7 @@ import libdocFunctions                      from "./_data/libdocFunctions.js";
 // END LibDoc imports
 
 // START Project imports
+// Importar configuración específica del proyecto para esta plantilla
 import projectConfig from "./eleventy.project.js";
 // END Project imports
 
@@ -59,6 +60,7 @@ export default function(eleventyConfig) {
     // END FILE COPY
 
     // START Project config
+    // Configuración específica de esta plantilla
     projectConfig(eleventyConfig);
     // END Project config
     

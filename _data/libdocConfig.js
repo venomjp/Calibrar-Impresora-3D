@@ -3,11 +3,14 @@
 // https://github.com/11ty/eleventy/issues/3128#issuecomment-1878745864
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
+// END IMPORT REQUIRE WORKAROUND
 
+// START Función para normalizar el prefijo de la ruta base, de modo que siempre tenga el formato `/nombre/` o vacío:
 import path from "node:path";
 const normalizePrefix = (p) =>
     !p || p === "/" ? "" : "/" + p.replace(/^\/+|\/+$/g, "") + "/";
-// END IMPORT REQUIRE WORKAROUND
+// END Función para normalizar el prefijo de la ruta base
+
 
 // START JSON IMPORT WORKAROUND
 // import userConfig from "../settings.json" with { "type": "json" };
@@ -33,6 +36,7 @@ export default {
     tocEnabled: userConfig.tocEnabled ?? true,
     tocHtmlTags: userConfig.tocHtmlTags ?? ["h1", "h2", "h3", "h4", "h5", "h6"],
     tocMinTags: userConfig.tocMinTags ?? 1,
+    // ... en el objeto exportado, sustituir la línea de htmlBasePathPrefix:
     htmlBasePathPrefix: normalizePrefix(
     process.env.PATH_PREFIX ?? userConfig.htmlBasePathPrefix ?? path.basename(process.cwd())),
     sandboxRunSwitch: userConfig.sandboxRunSwitch ?? true,

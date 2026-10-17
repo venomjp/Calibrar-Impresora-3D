@@ -1,13 +1,13 @@
 ---
-title: compartidos
+title: Compartidos
 description: Archivos compartidos
 ---
 
 # Archivos compartidos
 
-Para compartir archivos, vamos a evitar la opción de crear una carpeta 'shared' y duplicar los archivos.
+Para compartir archivos, vamos a **evitar** la opción de crear una carpeta 'shared' y duplicar los archivos.
 
-Marca en el nombre del archivo. Los archivos que se publican llevan .pub antes de la extensión: resources/files/manuales/guia.pub.pdf. Se queda en su carpeta organizada, no hay copia, y en el explorador de VSCode ves a simple vista qué sale a la web. Para cambiar el estado basta con renombrarlo. La URL pública sale limpia (/files/manuales/guia.pdf), porque el .pub se quita al copiar. No dependes de una lista aparte que pueda quedarse desactualizada si mueves un archivo. Lo único que hay que recordar es enlazar con el nombre sin .pub.
+Marca en el nombre del archivo. Los archivos que se publican llevan **.pub** antes de la extensión: `resources/files/manuales/guia.pub.pdf`. Se queda en su carpeta organizada, no hay copia, y en el explorador de VSCode ves a simple vista qué sale a la web. Para cambiar el estado basta con renombrarlo. La URL pública sale limpia (`/files/manuales/guia.pdf`), porque el `.pub` se quita al copiar. No dependes de una lista aparte que pueda quedarse desactualizada si mueves un archivo. ***Lo único que hay que recordar es enlazar con el nombre sin `.pub`.***
 
 ```js
 // eleventy.project.js
@@ -39,4 +39,6 @@ export default function (eleventyConfig) {
 }
 ```
 
-Salta node_modules y .git por si metes un proyecto entero en source-code/. La lista de archivos se calcula al arrancar, así que si marcas uno nuevo con npm start en marcha, hay que reiniciarlo. Sigue en pie la duda de la vez anterior: no sé si el ignores bloquea también el passthrough. Haz la prueba con un .pub.pdf y, si no sale en _site/files/, lo ajustamos.
+Salta node_modules y .git por si metes un proyecto entero en source-code/. 
+
+La lista de archivos se calcula al arrancar, así que si marcas uno nuevo con npm start en marcha, hay que reiniciarlo. 

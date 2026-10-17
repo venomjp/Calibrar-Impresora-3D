@@ -1,5 +1,5 @@
 ---
-title: 10-estructura-doc
+title: Estructura del proyecto y documentación
 description: Página de nivel 1 con subpáginas
 tags:
     - estructura
@@ -30,8 +30,8 @@ Los proyecto pueden contener recursos que se guardarán en 3 categorías básica
 3. source-code - En esta carpeta se guardarán los CODIGOS FUENTE DE PROGRAMAS, también scripts y archivos de configuración.
 
 Podemos encontrarnos con un proyecto que tiene varios códigos fuente:
-    * Emisor y receptor.
-    * Firmware Impresora y Firmware de  Pantalla
+* Emisor y receptor.
+* Firmware Impresora y Firmware de  Pantalla
 
 En ese caso creariamos carpetas para cada parte del programa
 * **software 1** - código fuente SW 1
