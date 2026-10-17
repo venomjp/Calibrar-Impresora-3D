@@ -164,6 +164,7 @@ Copyright (c) 2026 Juan Pedro Perianes
 | `.gitattributes` | Finales de línea LF |
 | `PATCHES.md` | Este archivo |
 | `TEMPLATE.md` | Manual de uso de la plantilla |
+| `Plantilla_Proyecto.code-workspace` | Configuración del entorno de desarrollo |
 
 ---
 
