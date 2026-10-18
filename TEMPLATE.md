@@ -8,7 +8,7 @@ Manual de la plantilla de proyectos: un fork de [eleventy-libdoc](https://github
 Hay tres niveles de repositorio:
 
 ```text
-LibDoc (upstream) -> Plantilla_Proyecto ("fork"-template) -> cada proyecto (documentación)
+LibDoc (upstream) -> Plantilla_Proyecto ("fork") -> Proyecto X (web, docs...)
 ```
 
 ---
