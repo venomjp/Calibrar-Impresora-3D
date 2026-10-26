@@ -1,0 +1,36 @@
+16-01-2026
+
+* OFFSET Z = -1.1mm
+
+0. Velocidades máximas en vacío
+	- X/Y	: F21000 -> 350
+	- Z	: F4200  -> 70	(1/5 veces la velocidad de X/Y)
+1. Flujo Máximo en vacío PLA (210ºC) --> F480 --> 19.2 --> 200 mm^3/s
+2. Flujo Máximo en circuito --> z=19.2 / vel=72 / Flujo=14.55mm^3/sg
+3. Linear Advance --> 1: 0.06 / 2: 0.075
+
+18-01-2026
+
+1. Flujo Máximo en vacío PETG (240ºC) --> F600	--> 24	--> 250mm^3/s (Pronterface)
+2. Flujo Max en circuito (255ºC) --> z=32 / vel=104 / Flujo=21mm^3/sg (Test OrcaSlicer)
+3. Linear Advance PETG (250/80) --> 1: 0.8 / 2: 0.075 (Test Marlin)
+4. Aceleración Maxima PETG - Test OrcaSlicer
+	Con 2400 sigue saliendo bien
+	- OrcaSlicer
+		AccMax X/Y 2400 mm/s^2
+		AccMax Z 100
+		AccMax E 10000
+		Acc Max para la extrusión 2000
+		Acc Max retracción 3000
+		Acc Max desplazamiento 3000
+	- Firmware (modifico los mismos valores)
+		DEFAULT_MAX_ACCELERATION
+		DEFAULT_ACCELERATION
+		DEFAULT_RETRACT_ACCELERATION
+		DEFAULT_TRAVEL_ACELERATION
+
+21-01-2026
+
+5. Junction Deviation PETG - Test OrcaSlicer
+	- Primera Aproximación: J=0.187
+	- Segunda Aproximación: J=
