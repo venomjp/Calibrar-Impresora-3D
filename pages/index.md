@@ -1,6 +1,6 @@
 ---
 title: Calibrar Impresora 3D
-description: He desarrollado mi propio proceso ce calibración de una impresora 3D, fundamental para garantizar la calidad y precisión de las impresiones. 
+description: Mi propio proceso de calibración de impresora 3D. 
 ---
 
 <img src="../favicon.png" 
