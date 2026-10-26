@@ -1,6 +1,6 @@
 ---
 title: Calibrar Impresora 3D
-description: Mi propio proceso de calibración de impresora 3D. 
+description: Mi propio proceso de calibración de una impresora 3D
 ---
 
 <img src="../favicon.png" 
